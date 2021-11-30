@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        var scoreArry = [];
+        var students = [];
+        
+        document.addEventListener("DOMContentLoaded", function () {
+        
+            var noOfStudents = 2; // define the no of students
+        
+            for (let i = 1; i <= noOfStudents; i++) {
+                var studentName = window.prompt("enter Name");
+                var geone = parseFloat(window.prompt("enter number 1"));
+                var getwo = parseFloat(window.prompt("enter number 2"));
+                var gthree = parseFloat(window.prompt("enter number 3"));
+        
+                var student = {
+                    Name: studentName,
+                    Score1: geone,
+                    Score2: getwo,
+                    Score3: gthree
+                };
+        
+                students.push(student);
+            }
+        
+            calculateAverage(students); //calculate the average
+        
+            alert('Name: ' + scoreArry[0].Name + ' Grade:' + scoreArry[0].Score);
+            alert('Name: ' + scoreArry[1].Name + ' Grade:' + scoreArry[1].Score);
+        });
+        
+        function calculateAverage(students) { //calculate the average
+        
+            students.forEach((student) => {
+        
+                var average = (student.Score1 + student.Score2 + student.Score3) / 3;
+                var score = getScore(average);
+                var scoreObjct = {  //create gradea object
+                    Name: student.Name,
+                    Score: score
+                };
+        
+                scoreArry.push(scoreObjct); // score array contains all the grades with student name
+            })
+        };
+        
+        function getScore(everage) { //return the grade
+            if (everage >= 10) {
+                return 'Accept';
+            }
+            else if (everage <= 10 ) {
+                return 'Rejected'
+            }
+        
+            // ... add your conditions
+        };
+    </script>
+</body>
+</html>
